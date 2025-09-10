@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { CardContext } from './CardContextDef';
 import type { CardFilterType, CardType } from '../types/CardTypes';
+import data from '../data/data.json'
 
 interface CardProviderProps {
   children: ReactNode;
@@ -12,17 +13,7 @@ export const CardProvider = ({ children }: CardProviderProps) => {
   const [cards, setCards] = useState<CardType[]>([])
 
   useEffect(() => {
-    const loadCards = async () => {
-      try {
-        const response = await fetch('../src/data/data.json');
-        const cardsData = await response.json();
-        setCards(cardsData);
-      }
-      catch (error) {
-        console.error('Error al cargar o parsear el archivo:', error);
-      }
-    }
-    loadCards()
+    setCards(data);
   }, []);
 
   const deleteCard = (id: string) => {
