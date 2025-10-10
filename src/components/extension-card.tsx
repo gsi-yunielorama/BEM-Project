@@ -1,17 +1,18 @@
 import { useCards } from "../hooks/useCards";
 
 type ExtensionCardProps = {
-    id: string;
+    _id: string;
     logo: string;
     name: string;
     description: string;
     isActive: boolean;
 };
 
-const ExtensionCard = ({ id, name, description, logo, isActive }: ExtensionCardProps) => {
+const ExtensionCard = ({ _id, name, description, logo, isActive }: ExtensionCardProps) => {
     const { deleteCard, toggleCardStatus } = useCards();
-    const onDeleteCard = () => deleteCard(id);
-    const onToggleStatusCard = () => toggleCardStatus(id);
+    const onDeleteCard = () => deleteCard(_id);
+
+    const onToggleStatusCard = () => toggleCardStatus(_id, { isActive: !isActive });
 
     return <div className="text-start flex flex-col border border-solid border-Neutral_300 dark:border-Neutral_600 justify-between bg-Neutral_0 dark:bg-Neutral_800 text-white p-4 rounded-3xl gap-8">
         <div className="flex gap-4">

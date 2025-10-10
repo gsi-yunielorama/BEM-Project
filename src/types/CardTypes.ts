@@ -1,5 +1,5 @@
 export type CardType = {
-  id: string;
+  _id: string;
   logo: string;
   name: string;
   description: string;
